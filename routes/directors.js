@@ -1,4 +1,5 @@
 var mongo = require('mongodb');
+var request = require('request');
  
 var Server = mongo.Server,
 Db = mongo.Db,
@@ -41,7 +42,17 @@ exports.getAllDirectors = function(req, res) {
  
 exports.addDirector = function(req, res) {
 	console.log('you made it to route atleast');
-	res.send("hope");
+
+	request({
+		uri: "https://api.new.livestream.com/accounts/6488834",
+		method: "GET",
+		timeout: 10000,
+		followRedirect: true,
+		maxRedirects: 10
+		}, function(error, response, body) {
+			res.send(body);
+			console.log(body);
+	});
 	// var wine = req.body;
 	// console.log('Adding wine: ' + JSON.stringify(wine));
 	// db.collection('wines', function(err, collection) {
