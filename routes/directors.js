@@ -5,14 +5,15 @@ var directorModel = require('../models/director').Director;
 var APIResponder = require('../lib/apiresponder');
  
 exports.getDirectorById = function(req, res) {
-  directorModel.findById(account_id, function(err, account) {
-    if(err) {
-      response_error = "Error while accessing account_id: " + account_id;
+	var id = req.params.id;
+	directorModel.findOne({ livestream_id: id}, function (err, doc){
+		if(err || doc === null){
+			response_error = "Error while getting director: " + err;
       return APIResponder.respond(res, null, response_error);
-    }
-
-      return APIResponder.respond(res, account);
-  });
+		} else {
+			return APIResponder.respond(res, doc);
+		}
+	});
 };
  
 exports.getAllDirectors = function(req, res) {
@@ -67,10 +68,6 @@ exports.addDirector = function(req, res) {
 };
  
 exports.updateDirector = function(req, res) {
-
-};
- 
-exports.deleteDirector = function(req, res) {
 
 };
 
