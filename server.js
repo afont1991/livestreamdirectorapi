@@ -9,17 +9,11 @@ app.configure(function () {
 });
  
 
-app.get('/director/:id', directors.getDirectorById);
-getAllDirectors
-addDirector
-updateDirector
-deleteDirector
-
-app.get('/wines', wine.findAll);
-app.get('/wines/:id', wine.findById);
-app.post('/wines', wine.addWine);
-app.put('/wines/:id', wine.updateWine);
-app.delete('/wines/:id', wine.deleteWine);
+app.get('/directors/:id', directors.getDirectorById);
+app.get('/directors', directors.getAllDirectors);
+app.post('directors/add', directors.addDirector);
+app.put('directors/update/:id', directors.updateDirector);
+app.delete('/directors/delete/:id', directors.deleteDirector);
  
 app.listen(3000);
 console.log('Listening on port 3000...');
