@@ -22,7 +22,7 @@ app.configure(function () {
 app.get('/directors/:id', directors.getDirectorById);
 app.get('/directors', directors.getAllDirectors);
 app.post('/directors', directors.addDirector);
-app.put('/directors/:id', directors.updateDirector);
+app.put('/directors', directors.updateDirector);
  
 app.listen(3000);
 console.log('Listening on port 3000...');

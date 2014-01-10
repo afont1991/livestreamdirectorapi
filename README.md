@@ -16,8 +16,10 @@
 		- Returns all currently registered directors
 	POST http://localhost:3000/directors
 		- Registers new director
+		- ID is required other fields are optional
 		Example: 
 			curl -i -X POST -H 'Content-Type: application/json' -d '{"livestream_id": "6488824", "favorite_movies": "Anything by Quentin Tarantino", "favorite_camera": "Canon"}' http://localhost:3000/directors
 	PUT http://localhost:3000/directors
 		- Can be used to update a directors favorite camera or movie
 		Example:
+			 curl -i -X PUT -H 'Content-Type: application/json' -d '{"livestream_id": "648884", "favorite_movies": "Anything with Leo In it", "favorite_camera": "Canon"}' http://localhost:3000/directors

@@ -68,7 +68,22 @@ exports.addDirector = function(req, res) {
 };
  
 exports.updateDirector = function(req, res) {
-
+	livestream_id = req.body.livestream_id;
+	favorite_camera = req.body.favorite_camera;
+	favorite_movies = req.body.favorite_movies;
+	if(!livestream_id){
+		response_error = "livestream ID is required;";
+		APIResponder.respond(res, null, response_error);
+	} else {
+		directorModel.update({livestream_id: livestream_id}, {favorite_camera: favorite_camera, favorite_movies: favorite_movies}, function(err, updated) {
+			if(err || updated === 0) {
+				response_error = "Couldn't update director " + livestream_id;
+				APIResponder.respond(res, null, response_error);
+			} else {
+				APIResponder.respond(res, "Director Updated");
+			}
+		});
+	}
 };
 
 
