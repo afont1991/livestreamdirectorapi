@@ -22,13 +22,22 @@ exports.addDirector = function(req, res) {
 		maxRedirects: 10,
 		json: true
 		}, function(error, response, body) {
-			director = {
-				id: body['id'],
-				full_name: body['full_name'],
-				dob: body['dob'],
-				favorite_camera : "canon",
-				favorite_movies : "Anything by Quentin Tarantino"
-			};
+			director = new directorModel;
+			director.livestream_id= body['id'];
+			director.full_name = body['full_name'];
+			director.dob = body['dob'];
+			director.favorite_camera = "canon";
+			director.favorite_movies = "Anything by Quentin Tarantino";
+
+			director.save(function(err) {
+				if(err) {
+					console.log(err);
+					response_error = "Error while creating account for Director";
+					APIResponder.respond(res, null, response_error);
+				} else {
+					APIResponder.respond(res, director);
+				}
+			});
 			res.send("created" + director);
 	});
 };

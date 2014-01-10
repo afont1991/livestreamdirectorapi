@@ -2,45 +2,29 @@ mongoose = require('mongoose');
 ObjectId = mongoose.Schema.ObjectId;
 
 DirectorSchema = new mongoose.Schema({
-  firstname: {
+  livestream_id: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true
+  },
+  full_name: {
     type: String,
     trim: true,
     required: true
   },
-  lastname: {
+  dob: {
     type: String,
     trim: true,
     reqired: true
   },
-  username: {
+  favorite_camera: {
     type: String,
-    trim: true,
-    required: true,
-    unique: true
+    required: false,
   },
-  password: {
+  favorite_movies: {
     type: String,
-    trim: true,
-    required: true
-  },
-  email: {
-    type: String,
-    lowercase: true,
-    unique: true,
-    required: true,
-    unique: true
-  },
-  country: {
-    type: String,
-    lowercase: true,
-    trim: true,
-    required: true
-  },
-  status: {
-    type: String,
-    enum: 'active',
-    default: 'active',
-    required: true
+    required: false,
   }
 });
 

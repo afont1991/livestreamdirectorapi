@@ -1,8 +1,17 @@
 var express = require('express'),
-	directors = require('./routes/directors');
+	directors = require('./routes/directors'),
+	mongoose  = require('mongoose');
  
 var app = express();
- 
+
+mongoose.connect('mongodb://localhost/test');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log("conected succesfully to mongoDB");
+});
+
 app.configure(function () {
 	app.use(express.logger('dev')); /* 'default', 'short', 'tiny', 'dev' */
 	app.use(express.bodyParser());
