@@ -6,6 +6,7 @@ var app = express();
 
 mongoose.connect('mongodb://localhost/test');
 
+// checking to make sure mongod is running if not an error is returned
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
