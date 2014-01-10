@@ -32,13 +32,12 @@ exports.addDirector = function(req, res) {
 			director.save(function(err) {
 				if(err) {
 					console.log(err);
-					response_error = "Error while creating account for Director";
+					response_error = "Error while creating account for Director " + err;
 					APIResponder.respond(res, null, response_error);
 				} else {
 					APIResponder.respond(res, director);
 				}
 			});
-			res.send("created" + director);
 	});
 };
  
