@@ -5,12 +5,24 @@ var directorModel = require('../models/director').Director;
 var APIResponder = require('../lib/apiresponder');
  
 exports.getDirectorById = function(req, res) {
-	var id = req.params.id;
-	res.send("stuff is working" + id);
+  directorModel.findById(account_id, function(err, account) {
+    if(err) {
+      response_error = "Error while accessing account_id: " + account_id;
+      return APIResponder.respond(res, null, response_error);
+    }
+
+      return APIResponder.respond(res, account);
+  });
 };
  
 exports.getAllDirectors = function(req, res) {
-	res.send("stuff is working");
+  directorModel.find(function(err, directors) {
+    if(err) {
+      response_error = "Error while getting directors: " + err;
+      return APIResponder.respond(res, null, response_error);
+    }
+      return APIResponder.respond(res, directors);
+  });
 };
  
 exports.addDirector = function(req, res) {

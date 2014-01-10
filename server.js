@@ -12,6 +12,7 @@ db.once('open', function callback () {
   console.log("conected succesfully to mongoDB");
 });
 
+
 app.configure(function () {
 	app.use(express.logger('dev')); /* 'default', 'short', 'tiny', 'dev' */
 	app.use(express.bodyParser());
