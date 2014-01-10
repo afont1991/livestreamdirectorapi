@@ -40,6 +40,7 @@ exports.getAllDirectors = function(req, res) {
 };
  
 exports.addDirector = function(req, res) {
+	console.log('you made it to route atleast');
 	// var wine = req.body;
 	// console.log('Adding wine: ' + JSON.stringify(wine));
 	// db.collection('wines', function(err, collection) {
