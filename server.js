@@ -1,5 +1,5 @@
 var express = require('express'),
-	wine = require('./routes/wines');
+	directors = require('./routes/directors');
  
 var app = express();
  
@@ -8,6 +8,13 @@ app.configure(function () {
 	app.use(express.bodyParser());
 });
  
+
+app.get('/director/:id', directors.getDirectorById);
+getAllDirectors
+addDirector
+updateDirector
+deleteDirector
+
 app.get('/wines', wine.findAll);
 app.get('/wines/:id', wine.findById);
 app.post('/wines', wine.addWine);
