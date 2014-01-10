@@ -1,0 +1,13 @@
+{
+	"name": "director-directory",
+
+	"description": "A place for Directors to be Directed to thier Directory",
+
+	"version": "0.0.1",
+
+	"private": true,
+	
+	"dependencies": {
+		"express": "3.2.3"
+	}
+}
